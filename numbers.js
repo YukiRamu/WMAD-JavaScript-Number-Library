@@ -2,10 +2,6 @@
 
 const numbersLib = () => {
 
-	function NumformatCheck() {
-		// to be added and called in each function
-	}
-
 	function add(a, b) {
 		// add a to b
 		return a + b;
