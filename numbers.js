@@ -90,7 +90,7 @@ const numbersLib = () => {
 
 	function IsEven(aNumber) {
 		// is a number even? true false
-		if (aNumber % 2 == 0)
+		if (aNumber % 2 === 0)
 			return true; //even
 		else
 			return false;

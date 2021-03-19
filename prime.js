@@ -1,5 +1,58 @@
-/* Under construction */
-// For a number to be prime, it must meet the following conditions
-// Can it be divided by 1? - all numbers can be divided by one, so yes
-// can it be divided by itself? - all numbers, divided into themselves once
-// Can it be EVENLY divided by any other number? if it can, it can't be prime
+/* This program evaluates if a given number is a prime number or not.
+// The logic is...
+// Is the number 2 => Yes, then it IS a prime number
+// Is the number less than 2? (0 or 1) => Yes, then it is not a prime number
+// Is the number even except for 2? => Yes, then it is not a prime number
+// 
+// Validation check covers...
+// is the number integger? => No then it is not a prime number
+*/
+const isPrime = (number) => {
+
+  if (number === 2) {
+    return true; //prime
+  }
+
+  if (!Number.isInteger(number) || number < 2 || ((number % 2) === 0)) {
+    //not number, 0 or 1, even number
+    return false; //not a prime
+  }
+
+  /* checking ONLY Odd numbers because even numbers are already covered
+  // looping from 3 to number-1 becuase 2 is already covered
+  // checking only less than square root of number
+  // number(15) = x(3) * y(5)
+  // x(3) <= y(5)
+  // x(3) * x(3) <= x(3) * y(5)
+  // x(3) * x(3) <= number(15)
+  // x(2) <= square(number) : square(15)= 3.8727....
+  //
+  // for loop will be executed one more after it reaches to number-1
+  */
+  let counter = 0;
+  for (let i = 3; i <= Math.sqrt(number); i += 2) {
+    counter++;
+    //if the remainder is 0, it is not a prime number i.e 9 % 3 --> 9 % 9
+    if (number % i === 0) {
+      return false; //not a prime
+    }
+  }
+  console.log("counter is " + counter);
+  //all other numbers are prime numbers
+  return true
+}
+
+console.log(isPrime(10100011)); //counter 1588
+
+/* =========== Push all prime numbers into an array ============= */
+const primeNumGenerator = (end) => {
+  let primeNumArray = [];
+  for (let num = 0; num < end; num++) {
+    if (isPrime(num)) {
+      primeNumArray.push(num);
+    }
+  }
+  console.log(primeNumArray);
+  return primeNumArray
+}
+primeNumGenerator(101) //specify the end number here
